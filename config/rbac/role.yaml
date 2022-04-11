@@ -1,0 +1,34 @@
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: flink-operator-role
+rules:
+- apiGroups:
+  - daas.tenxcloud.com
+  resources:
+  - flinkclusters
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - daas.tenxcloud.com
+  resources:
+  - flinkclusters/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - daas.tenxcloud.com
+  resources:
+  - flinkclusters/status
+  verbs:
+  - get
+  - patch
+  - update
