@@ -1,0 +1,4 @@
+channels:
+- currentCSV: flink-operator.v0.0.1
+  name: stable
+packageName: flink-operator

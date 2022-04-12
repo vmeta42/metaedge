@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    olm.deployment-spec-hash: f86d66955
+    olm.owner: flink-operator.v0.0.1
+    olm.owner.kind: ClusterServiceVersion
+    olm.owner.namespace: xiaolin
+    operators.coreos.com/flink-cluster-operator.xiaolin: ""
+  name: flink-cluster-operator
+  namespace: xiaolin
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: flink-cluster-operator
+      control-plane: controller-manager
+      plugin: flink-cluster-operator
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        categories: Big Data
+        certified: "false"
+        containerImage: dev-registry.tenxcloud.com/system_containers/flink-operator:0.1.6
+        createdAt: "2021-10-08 10:30:00"
+        description: Flink operator creates and manages flink clusters running in Kubernetes.
+        olm.operatorGroup: xiaolin
+        olm.operatorNamespace: xiaolin
+        olm.targetNamespaces: xiaolin
+        repository: http://gitlab.tenxcloud.com/middleware-operators/flink-operator
+        support: tenxcloud
+      labels:
+        app: flink-cluster-operator
+        control-plane: controller-manager
+        plugin: flink-cluster-operator
+    spec:
+      containers:
+      - args:
+        - --secure-listen-address=0.0.0.0:8443
+        - --upstream=http://127.0.0.1:8080/
+        - --logtostderr=true
+        - --v=10
+        image: dev-registry.tenxcloud.com/system_containers/kube-rbac-proxy:v0.4.1
+        imagePullPolicy: IfNotPresent
+        name: kube-rbac-proxy
+        ports:
+        - containerPort: 8443
+          name: https
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      - args:
+        - --metrics-bind-address=127.0.0.1:8080
+        - --health-probe-bind-address=127.0.0.1:8081
+        - --leader-elect
+        command:
+        - /manager
+        env:
+        - name: FLINK_OPERATOR_ENABLE_WEBHOOKS
+          value: "false"
+        - name: WATCH_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        image: dev-registry.tenxcloud.com/system_containers/flink-operator:0.1.6
+        imagePullPolicy: Always
+        name: flink-operator
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: flink-cluster-operator
+      serviceAccountName: flink-cluster-operator
+      terminationGracePeriodSeconds: 10

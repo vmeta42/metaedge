@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    release: my-hdfs
+  name: my-hdfs-scripts
+data:
+  bootstrap.sh: |-
+    #!/bin/bash
+    : ${HADOOP_PREFIX:=/opt/hadoop-2.7.2}
+    : ${HADOOP_CONF_DIR:=/etc/hadoop}
+    # installing libraries if any - (resource urls added comma separated to the ACP system variable)
+    if [[ "${NODE_TYPE}" =~ "hdfs-jn" ]]; then
+      $HADOOP_PREFIX/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script $HADOOP_PREFIX/bin/hdfs start journalnode
+    fi
+    if [[ "${NODE_TYPE}" =~ "hdfs-dn" ]]; then
+      #  wait up to 30 seconds for namenode
+      (while [[ $count -lt 15 && -z `curl -sf http://my-hdfs-namenode-0.my-hdfs-namenode.dreamxos.svc.cluster.local:50070` ]]; do ((count=count+1)) ; echo "Waiting for my-hdfs-namenode-0.my-hdfs-namenode.dreamxos.svc.cluster.local" ; sleep 2; done && [[ $count -lt 15 ]])
+      [[ $? -ne 0 ]] && echo "Timeout waiting for hdfs-nn, exiting." && exit 1
+      $HADOOP_PREFIX/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script $HADOOP_PREFIX/bin/hdfs start datanode
+    fi
+    if [[ "${NODE_TYPE}" =~ "hdfs-nn" ]]; then
+      /hdfs-scripts/format-and-run.sh
+    fi
+    if [[ "${NODE_TYPE}" =~ "hdfs-rm" ]]; then      // 添加启动resourcemanager的命令
+      $HADOOP_PREFIX/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start resourcemanager
+    fi
+    if [[ "${NODE_TYPE}" =~ "hdfs-nm" ]]; then     // 添加启动nodemanager的命令
+      $HADOOP_PREFIX/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start nodemanager
+    fi
+    if [[ $1 == "-d" ]]; then
+      until find ${HADOOP_PREFIX}/logs -mmin -1 | egrep -q '.*'; echo "`date`: Waiting for logs..." ; do sleep 2 ; done
+      tail -F ${HADOOP_PREFIX}/logs/* &
+      while true; do sleep 1000; done
+    fi
+    if [[ $1 == "-bash" ]]; then
+      /bin/bash
+    fi

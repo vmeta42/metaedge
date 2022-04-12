@@ -1,0 +1,179 @@
+{
+  "status": "Success",
+  "code": 200,
+  "data": {
+    "total": 1,
+    "items": [
+      {
+        "objectMeta": {
+          "name": "flinksessioncluster-sample",
+          "namespace": "default",
+          "selfLink": "/apis/daas.tenxcloud.com/v1/namespaces/default/flinkclusters/flinksessioncluster-sample",
+          "uid": "7bd96420-c822-4267-be0a-d907fc324dfa",
+          "resourceVersion": "10704258",
+          "generation": 1,
+          "creationTimestamp": "2021-07-30T05:38:48Z",
+          "annotations": {
+            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"daas.tenxcloud.com/v1\",\"kind\":\"FlinkCluster\",\"metadata\":{\"annotations\":{},\"name\":\"flinksessioncluster-sample\",\"namespace\":\"default\"},\"spec\":{\"envVars\":[{\"name\":\"FOO\",\"value\":\"bar\"}],\"flinkProperties\":{\"taskmanager.numberOfTaskSlots\":\"1\"},\"image\":{\"name\":\"dev-registry.tenxcloud.com/system_containers/flink:1.8.2\",\"pullPolicy\":\"Always\"},\"jobManager\":{\"accessScope\":\"Cluster\",\"ports\":{\"ui\":8081},\"resources\":{\"limits\":{\"cpu\":\"200m\",\"memory\":\"1024Mi\"}},\"securityContext\":{\"runAsGroup\":9999,\"runAsUser\":9999}},\"taskManager\":{\"replicas\":1,\"resources\":{\"limits\":{\"cpu\":\"200m\",\"memory\":\"1024Mi\"}},\"sidecars\":[{\"command\":[\"sleep\",\"10000\"],\"image\":\"alpine\",\"name\":\"sidecar\"}],\"volumeMounts\":[{\"mountPath\":\"/cache\",\"name\":\"cache-volume\"}],\"volumes\":[{\"emptyDir\":{},\"name\":\"cache-volume\"}]}}}\n"
+          }
+        },
+        "typeMeta": {
+          "kind": "FlinkCluster",
+          "apiVersion": "daas.tenxcloud.com/v1"
+        },
+        "replicas": 0,
+        "currentReplicas": 0,
+        "status": "Creating",
+        "storage": "",
+        "cronBackup": false,
+        "resources": {},
+        "service": {
+          "name": "flinksessioncluster-sample-jobmanager",
+          "namespace": "default",
+          "port": {
+            "port": 8081,
+            "protocol": "TCP"
+          }
+        },
+        "storageCluster": "",
+        "storageClusterType": "",
+        "storageClusterName": "",
+        "clusterType": "flink",
+        "backupCluster": {
+          "name": "",
+          "storageClusterName": ""
+        },
+        "subResources": [
+          {
+            "name": "flinksessioncluster-sample-jobmanager",
+            "type": "StatefulSet",
+            "namespace": "default"
+          },
+          {
+            "name": "flinksessioncluster-sample-taskmanager",
+            "type": "StatefulSet",
+            "namespace": "default"
+          }
+        ],
+        "image": "dev-registry.tenxcloud.com/system_containers/flink:1.8.2",
+        "phpMyAdmin": false,
+        "phpMyAdminResource": {},
+        "phpMyAdminService": {
+          "port": {}
+        },
+        "pgAdminService": {
+          "port": {}
+        },
+        "spec": {
+          "pgSpec": {
+            "postgresql": {
+              "version": "",
+              "parameters": null
+            },
+            "volume": {
+              "size": "",
+              "storageClass": ""
+            },
+            "patroni": {
+              "initdb": null,
+              "pg_hba": null,
+              "ttl": 0,
+              "loop_wait": 0,
+              "retry_timeout": 0,
+              "maximum_lag_on_failover": 0,
+              "slots": null,
+              "synchronous_mode": false,
+              "synchronous_mode_strict": false
+            },
+            "superUserPassword": "",
+            "pgAdmin": null,
+            "teamId": "",
+            "dockerImage": "dev-registry.tenxcloud.com/system_containers/flink:1.8.2",
+            "enableFTP": null,
+            "ftpConfig": {
+              "url": "",
+              "user": "",
+              "password": ""
+            },
+            "lbGroup": "",
+            "schemaPort": "",
+            "customPorts": "",
+            "allowedSourceRanges": null,
+            "numberOfInstances": 0,
+            "users": null,
+            "password": null,
+            "clone": {},
+            "standby": null,
+            "podAnnotations": null,
+            "serviceAnnotations": null,
+            "tls": null,
+            "status": "",
+            "currentReplicas": 0,
+            "storageClassName": "",
+            "resources": {}
+          },
+          "flinkSpec": {
+            "image": {
+              "name": "dev-registry.tenxcloud.com/system_containers/flink:1.8.2"
+            },
+            "jobManager": {
+              "accessScope": "Cluster",
+              "ports": {
+                "ui": 8081
+              },
+              "resources": {
+                "limits": {
+                  "cpu": "200m",
+                  "memory": "1Gi"
+                }
+              },
+              "memoryOffHeapMin": "0",
+              "securityContext": {
+                "runAsUser": 9999,
+                "runAsGroup": 9999
+              }
+            },
+            "taskManager": {
+              "replicas": 1,
+              "ports": {},
+              "resources": {
+                "limits": {
+                  "cpu": "200m",
+                  "memory": "1Gi"
+                }
+              },
+              "memoryOffHeapMin": "0",
+              "volumes": [
+                {
+                  "name": "cache-volume",
+                  "emptyDir": {}
+                }
+              ],
+              "volumeMounts": [
+                {
+                  "name": "cache-volume",
+                  "mountPath": "/cache"
+                }
+              ],
+              "sidecars": [
+                {
+                  "name": "sidecar",
+                  "image": "alpine",
+                  "command": [
+                    "sleep",
+                    "10000"
+                  ],
+                  "resources": {}
+                }
+              ]
+            }
+          }
+        },
+        "enablePGadmin": false,
+        "pgVersion": "",
+        "monitorAddress": "",
+        "enable_tdjdbc": false
+      }
+    ]
+  }
+}

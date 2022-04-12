@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    release: my-hdfs
+  name: my-hdfs-config
+data:
+  mapred-site.xml: |-
+    <?xml version="1.0"?>
+    <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+    <configuration>
+      <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+      </property>
+    </configuration>
+  yarn-site.xml: |-
+    <?xml version="1.0"?>
+    <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+    <configuration>
+      <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+      </property>
+      <property>
+        <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+        <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+      </property>
+      <property>
+        <name>yarn.resourcemanager.hostname</name>
+        <value>hadoop-yarn-resourcemanager</value>
+      </property>
+      <property>
+        <name>yarn.resourcemanager.bind-host</name>
+        <value>0.0.0.0</value>
+      </property>
+    </configuration>

@@ -1,0 +1,179 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: flink-cluster.v0.0.1
+  namespace: system-tce
+  annotations:
+    csv: flink-cluster.v0.0.1
+rules:
+  - apiGroups:
+      - daas.tenxcloud.com
+    resources:
+      - flinkclusters
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - daas.tenxcloud.com
+    resources:
+      - flinkclusters/status
+    verbs:
+      - get
+      - update
+      - patch
+  - apiGroups:
+      - apps
+    resources:
+      - deployments
+      - statefulsets
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - apps
+    resources:
+      - deployments/status
+      - statefulsets/status
+    verbs:
+      - get
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+      - secrets
+    verbs:
+      - create
+      - get
+      - list
+      - watch
+      - patch
+  - apiGroups:
+      - apps
+    resources:
+      - controllerrevisions
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - ""
+    resources:
+      - pods/status
+    verbs:
+      - get
+  - apiGroups:
+      - ""
+    resources:
+      - services
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - ""
+    resources:
+      - services/status
+    verbs:
+      - get
+  - apiGroups:
+      - ""
+    resources:
+      - events
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - ""
+    resources:
+      - events/status
+    verbs:
+      - get
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - batch
+    resources:
+      - jobs
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - batch
+    resources:
+      - jobs/status
+    verbs:
+      - get
+  - apiGroups:
+      - extensions
+    resources:
+      - ingresses
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - extensions
+    resources:
+      - ingresses/status
+    verbs:
+      - get
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: flink-cluster.v0.0.1
+  namespace: system-tce
+  annotations:
+    csv: flink-cluster.v0.0.1
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name:  flink-cluster.v0.0.1
+subjects:
+  - kind: ServiceAccount
+    name: flink-cluster
+    namespace: system-tce

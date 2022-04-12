@@ -1,0 +1,15 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  labels:
+    source-ns: system-tce
+  name: daas-registry-flink
+  namespace: operator-hub
+spec:
+  displayName: built-in flink registry
+  icon:
+    base64data: ""
+    mediatype: ""
+  image: dev-registry.tenxcloud.com/system_containers/daas-flink-registry:1.0.0
+  publisher: system admin
+  sourceType: grpc
