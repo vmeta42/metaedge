@@ -385,6 +385,16 @@ spec:
       limits:
         memory: "2Gi"
         cpu: "200m"
+    tolerations:
+        - key: "node.kubernetes.io/unschedulable"
+          operator: Exists
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: node-role.kubernetes.io/edge
+                  operator: Exists
   job:
     jarFile: /opt/flink/examples/cruiser-2.0.jar
     restartPolicy: Never

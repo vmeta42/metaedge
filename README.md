@@ -62,6 +62,7 @@ The operator is still under active development, there is no Helm chart available
 
 * [User Guide](docs/user_guide.md)
 * [Developer Guide](docs/developer_guide.md)
+* [Flink-On-Kubeedge Guide](docs/flink-on-kubeedge.md)
 
 ### API
 
