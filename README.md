@@ -1,9 +1,10 @@
 ![image](docs/image/MetaEdge_logo.png)
 
+![image](https://img.shields.io/badge/license-MIT-green)
+
 # Apache Flink On KubeEdge
 
-**This is an flink k8s operator which support kubeedge.**
-
+**This is an flink k8s operator which support kubeedge.**   
 Kubernetes Operator for Apache Flink is a control plane for running [Apache Flink](https://flink.apache.org/) on
 [Kubeedge](https://kubeedge.io/).
 
