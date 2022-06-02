@@ -1,6 +1,6 @@
 ![image](docs/image/MetaEdge_logo.png)
 
-![image](https://img.shields.io/badge/license-MIT-green)
+![image](https://img.shields.io/badge/license-MIT-green)   ![image](https://img.shields.io/badge/Kubernetes-1.15%2B-yellowgreen)  ![image](https://img.shields.io/badge/Flink-1.7%2B-orange)   ![image](https://img.shields.io/badge/kubectl-1.15%2B-yellow)
 
 # Apache Flink On KubeEdge
 
