@@ -381,8 +381,8 @@ spec:
   labels:
     name: flink-cluster-operator
   links:
-    - name: GitLab
-      url: https://gitlab.dev.21vianet.com/sbg2-tenxcloud/tms/flink-operator
+    - name: Github
+      url: https://github.com/vmeta42/metaedge
   maintainers:
     - email: tester@tenxcloud.com
       name: tenxcloud
