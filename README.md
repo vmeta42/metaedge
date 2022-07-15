@@ -92,18 +92,16 @@ Please check [CONTRIBUTING.md](CONTRIBUTING.md) and the [Developer Guide](docs/d
 
 ```bash
  make build
- docker build -t 172.22.50.227/system_containers/flink-operator:0.1.6 .
- 
- docker tag 172.22.50.223/system_containers/daas-flink-registry:0.1.6 172.22.50.227/system_containers/daas-flink-registry:0.1.6
+ docker build -t xiaolin8/flink-operator:0.1.6 .
 ```
 
 ## Build olm images
 
 ```bash
- docker build . -t dev-registry.tenxcloud.com/system_containers/flink-operator-bundle:0.1.6
- docker push dev-registry.tenxcloud.com/system_containers/flink-operator-bundle:0.1.6
+ docker build . -t xiaolin8/flink-operator-bundle:0.1.6
+ docker push xiaolin8/flink-operator-bundle:0.1.6
 
- opm --skip-tls index add --bundles dev-registry.tenxcloud.com/system_containers/flink-operator-bundle:0.1.6 --tag dev-registry.tenxcloud.com/system_containers/daas-flink-registry:0.1.6 -c="docker"
+ opm --skip-tls index add --bundles xiaolin8/flink-operator-bundle:0.1.6 --tag xiaolin8/daas-flink-registry:0.1.6 -c="docker"
 ```
 
 ## CatalogSource
@@ -121,7 +119,7 @@ spec:
   icon:
     base64data: ""
     mediatype: ""
-  image: dev-registry.tenxcloud.com/system_containers/daas-flink-registry:0.1.6
+  image: xiaolin8/daas-flink-registry:0.1.6
   publisher: system admin
   sourceType: grpc
 ```

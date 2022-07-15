@@ -16,7 +16,7 @@ metadata:
             "taskmanager.numberOfTaskSlots": "1"
           },
           "image": {
-            "name": "dev-registry.tenxcloud.com/system_containers/flink:1.14.4",
+            "name": "xiaolin8/flink:1.14.4",
             "pullPolicy": "Always"
           },
           "jobManager": {
@@ -50,7 +50,7 @@ metadata:
                   "sleep",
                   "10000"
                 ],
-                "image": "172.22.50.223/system_containers/alpine:3.14-bash",
+                "image": "xiaolin8/alpine:3.14-bash",
                 "name": "sidecar"
               }
             ],
@@ -73,7 +73,7 @@ metadata:
     capabilities: Full Lifecycle
     categories: Big Data
     certified: 'false'
-    containerImage: dev-registry.tenxcloud.com/system_containers/flink-operator:0.1.6
+    containerImage: xiaolin8/flink-operator:0.1.6
     createdAt: 2021-10-08 10:30:00
     description: Flink operator creates and manages flink clusters running in Kubernetes.
     repository: http://gitlab.tenxcloud.com/middleware-operators/flink-operator
@@ -128,7 +128,7 @@ spec:
                       - --upstream=http://127.0.0.1:8080/
                       - --logtostderr=true
                       - --v=10
-                    image: dev-registry.tenxcloud.com/system_containers/kube-rbac-proxy:v0.4.1
+                    image: xiaolin8/kube-rbac-proxy:v0.4.1
                     imagePullPolicy: IfNotPresent
                     name: kube-rbac-proxy
                     ports:
@@ -144,7 +144,7 @@ spec:
                       - --leader-elect
                     command:
                       - /manager
-                    image: dev-registry.tenxcloud.com/system_containers/flink-operator:0.1.6
+                    image: xiaolin8/flink-operator:0.1.6
                     imagePullPolicy: Always
                     name: flink-operator
                     env:

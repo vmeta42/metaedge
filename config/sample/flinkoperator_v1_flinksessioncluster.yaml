@@ -5,7 +5,7 @@ metadata:
 spec:
   serviceAccountName: flink-pod
   image:
-    name: dev-registry.tenxcloud.com/system_containers/flink:1.8.2
+    name: xiaolin8/flink:1.8.2
     pullPolicy: Always
   jobManager:
     replicas: 1

@@ -4,7 +4,7 @@ metadata:
   name: flinksessioncluster-sample
 spec:
   image:
-    name: dev-registry.tenxcloud.com/system_containers/flink-operator:scala_2.12-java11
+    name: xiaolin8/flink-operator:scala_2.12-java11
     pullPolicy: Always
   jobManager:
     accessScope: Cluster

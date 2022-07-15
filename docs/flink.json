@@ -14,7 +14,7 @@
           "generation": 1,
           "creationTimestamp": "2021-07-30T05:38:48Z",
           "annotations": {
-            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"daas.tenxcloud.com/v1\",\"kind\":\"FlinkCluster\",\"metadata\":{\"annotations\":{},\"name\":\"flinksessioncluster-sample\",\"namespace\":\"default\"},\"spec\":{\"envVars\":[{\"name\":\"FOO\",\"value\":\"bar\"}],\"flinkProperties\":{\"taskmanager.numberOfTaskSlots\":\"1\"},\"image\":{\"name\":\"dev-registry.tenxcloud.com/system_containers/flink:1.8.2\",\"pullPolicy\":\"Always\"},\"jobManager\":{\"accessScope\":\"Cluster\",\"ports\":{\"ui\":8081},\"resources\":{\"limits\":{\"cpu\":\"200m\",\"memory\":\"1024Mi\"}},\"securityContext\":{\"runAsGroup\":9999,\"runAsUser\":9999}},\"taskManager\":{\"replicas\":1,\"resources\":{\"limits\":{\"cpu\":\"200m\",\"memory\":\"1024Mi\"}},\"sidecars\":[{\"command\":[\"sleep\",\"10000\"],\"image\":\"alpine\",\"name\":\"sidecar\"}],\"volumeMounts\":[{\"mountPath\":\"/cache\",\"name\":\"cache-volume\"}],\"volumes\":[{\"emptyDir\":{},\"name\":\"cache-volume\"}]}}}\n"
+            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"daas.tenxcloud.com/v1\",\"kind\":\"FlinkCluster\",\"metadata\":{\"annotations\":{},\"name\":\"flinksessioncluster-sample\",\"namespace\":\"default\"},\"spec\":{\"envVars\":[{\"name\":\"FOO\",\"value\":\"bar\"}],\"flinkProperties\":{\"taskmanager.numberOfTaskSlots\":\"1\"},\"image\":{\"name\":\"xiaolin8/flink:1.8.2\",\"pullPolicy\":\"Always\"},\"jobManager\":{\"accessScope\":\"Cluster\",\"ports\":{\"ui\":8081},\"resources\":{\"limits\":{\"cpu\":\"200m\",\"memory\":\"1024Mi\"}},\"securityContext\":{\"runAsGroup\":9999,\"runAsUser\":9999}},\"taskManager\":{\"replicas\":1,\"resources\":{\"limits\":{\"cpu\":\"200m\",\"memory\":\"1024Mi\"}},\"sidecars\":[{\"command\":[\"sleep\",\"10000\"],\"image\":\"alpine\",\"name\":\"sidecar\"}],\"volumeMounts\":[{\"mountPath\":\"/cache\",\"name\":\"cache-volume\"}],\"volumes\":[{\"emptyDir\":{},\"name\":\"cache-volume\"}]}}}\n"
           }
         },
         "typeMeta": {
@@ -55,7 +55,7 @@
             "namespace": "default"
           }
         ],
-        "image": "dev-registry.tenxcloud.com/system_containers/flink:1.8.2",
+        "image": "xiaolin8/flink:1.8.2",
         "phpMyAdmin": false,
         "phpMyAdminResource": {},
         "phpMyAdminService": {
@@ -88,7 +88,7 @@
             "superUserPassword": "",
             "pgAdmin": null,
             "teamId": "",
-            "dockerImage": "dev-registry.tenxcloud.com/system_containers/flink:1.8.2",
+            "dockerImage": "xiaolin8/flink:1.8.2",
             "enableFTP": null,
             "ftpConfig": {
               "url": "",
@@ -114,7 +114,7 @@
           },
           "flinkSpec": {
             "image": {
-              "name": "dev-registry.tenxcloud.com/system_containers/flink:1.8.2"
+              "name": "xiaolin8/flink:1.8.2"
             },
             "jobManager": {
               "accessScope": "Cluster",
