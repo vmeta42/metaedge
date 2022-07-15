@@ -5,7 +5,7 @@ metadata:
 spec:
   serviceAccountName: default
   image:
-    name: '172.22.50.227/system_containers/flink:1.14.4'
+    name: 'xiaolin8/flink:1.14.4'
     pullPolicy: Always
   jobManager:
     accessScope: Cluster

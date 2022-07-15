@@ -10,6 +10,6 @@ spec:
   icon:
     base64data: ""
     mediatype: ""
-  image: dev-registry.tenxcloud.com/system_containers/daas-flink-registry:1.0.0
+  image: xiaolin8/daas-flink-registry:1.0.0
   publisher: system admin
   sourceType: grpc

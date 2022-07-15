@@ -58,7 +58,7 @@ spec:
                   fieldPath: metadata.name
             - name: RESOUCEMANAGER_POD_0
               value: my-hdfs-yarn-master-0
-          image: dev-registry.tenxcloud.com/system_containers/hadoop:uhopper_2.7.2
+          image: xiaolin8/hadoop:uhopper_2.7.2
           imagePullPolicy: Always
           name: resourcemanager
           ports:
@@ -141,7 +141,7 @@ spec:
                   fieldPath: metadata.name
             - name: RESOUCEMANAGER_POD_0
               value: my-hdfs-yarn-master-0
-          image: dev-registry.tenxcloud.com/system_containers/hadoop:uhopper_2.7.2
+          image: xiaolin8/hadoop:uhopper_2.7.2
           imagePullPolicy: Always
           name: nodemanager
           ports:

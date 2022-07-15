@@ -5,7 +5,7 @@ metadata:
 spec:
   serviceAccountName: flink-sa
   image:
-    name: 'dev-registry.tenxcloud.com/system_containers/flink:1.14.4'
+    name: 'xiaolin8/flink:1.14.4'
     pullPolicy: Always
   jobManager:
     accessScope: Cluster
@@ -32,7 +32,7 @@ spec:
         name: cache-volume
     sidecars:
       - name: sidecar
-        image: '172.22.50.223/system_containers/alpine:3.14-bash'
+        image: 'xiaolin8/alpine:3.14-bash'
         command:
           - sleep
           - '10000'

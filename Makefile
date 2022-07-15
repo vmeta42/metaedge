@@ -29,7 +29,7 @@ BUNDLE_METADATA_OPTS ?= $(BUNDLE_CHANNELS) $(BUNDLE_DEFAULT_CHANNEL)
 #
 # For example, running 'make bundle-build bundle-push catalog-build catalog-push' will build and push both
 # daas.tenxcloud.com/flink-operator-bundle:$VERSION and daas.tenxcloud.com/flink-operator-catalog:$VERSION.
-IMAGE_TAG_BASE ?= dev-registry.tenxcloud.com/system_containers/flink-operator
+IMAGE_TAG_BASE ?= xiaolin8/flink-operator
 
 # BUNDLE_IMG defines the image:tag used for the bundle.
 # You can use it as an arg. (E.g make bundle-build BUNDLE_IMG=<some-registry>/<project-name-bundle>:<tag>)
